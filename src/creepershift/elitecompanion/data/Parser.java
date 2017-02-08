@@ -4,7 +4,7 @@ package creepershift.elitecompanion.data;
 import creepershift.elitecompanion.Main;
 import creepershift.elitecompanion.util.LineWriter;
 
-import java.io.*;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -42,7 +42,9 @@ public class Parser {
                    /* Checks for the correct EVENT, in this case Materials being collected.
                     Sends that line to the parser, currently only returns material name and count. */
                    if(journalLines.get(i).contains(", \"event\":\"MaterialCollected\",")){
-                      System.out.println(ParserJson.parseMaterialString(journalLines.get(i))[0] + " " + ParserJson.parseMaterialString(journalLines.get(i))[1]);
+
+                       MaterialDataHandler.addEntry(ParserJson.parseMaterialString(journalLines.get(i))[0], Integer.parseInt(ParserJson.parseMaterialString(journalLines.get(i))[1]));
+
                    }
 
                }

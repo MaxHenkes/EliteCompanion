@@ -1,7 +1,9 @@
 package creepershift.elitecompanion;
 
 import creepershift.elitecompanion.data.Data;
+import creepershift.elitecompanion.data.MaterialDataHandler;
 import creepershift.elitecompanion.data.Parser;
+import creepershift.elitecompanion.gui.App;
 
 import java.io.File;
 
@@ -23,6 +25,9 @@ public class Main {
 
     public static void main(String[] args){
 
+
+        App.init();
+        MaterialDataHandler.init();
         /*
         Currently just used to make sure stuff is working.
         Will be reworked once the parts are all there.
@@ -44,9 +49,10 @@ public class Main {
        //Tests the parser with a journal file I specify.
        Parser.loadJournalFile(debugJournal, "Journal.170128220217.01.log");
 
+        System.out.println(MaterialDataHandler.printMaterial());
 
 
-     //   GuiBase.createGui();
+
     }
 
 
