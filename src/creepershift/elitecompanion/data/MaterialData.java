@@ -5,8 +5,8 @@ package creepershift.elitecompanion.data;
  */
 public class MaterialData {
 
-    String materialName;
-    int materialCount;
+   private String materialName;
+   private int materialCount;
 
     public MaterialData(String name){
         materialName = name;
@@ -32,4 +32,5 @@ public class MaterialData {
         materialCount += count;
 
     }
+
 }

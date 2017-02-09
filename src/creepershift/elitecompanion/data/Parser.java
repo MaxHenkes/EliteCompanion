@@ -2,6 +2,7 @@ package creepershift.elitecompanion.data;
 
 
 import creepershift.elitecompanion.Main;
+import creepershift.elitecompanion.Reference;
 import creepershift.elitecompanion.util.LineWriter;
 
 import java.io.File;
@@ -21,13 +22,12 @@ public class Parser {
 
 
         //TODO: Implement checking for file number and timestamp.
-        if (!debugName.equals(Data.lastFile)) {
 
             if (journal.exists()) {
                 System.out.println("Journal found.");
 
                 //Returns a list of Strings, each containing a line in the specified file.
-               List<String> journalLines = LineWriter.getFileLines(Main.eliteDirectory, debugName);
+               List<String> journalLines = LineWriter.getFileLines(Reference.eliteDirectory, debugName);
 
                String timeStamp = null;
                String fileName = debugName;
@@ -47,9 +47,12 @@ public class Parser {
 
                    }
 
+
+
                }
+                Main.materialStorage.saveFile();
                 //When we're done looping, we save the new data to our data file.
-               Data.saveData(new String[]{fileName, timeStamp});
+               Main.appStorage.saveData(new String[]{fileName, timeStamp});
 
 
 
@@ -62,4 +65,3 @@ public class Parser {
         }
     }
 
-}

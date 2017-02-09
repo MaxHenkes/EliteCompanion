@@ -45,7 +45,7 @@ public class MaterialDataHandler {
 
 
         for (int i = 0; i < mat.length; i++) {
-            if (mat[i].materialName.equals(name)) {
+            if (mat[i].getMaterialName().equals(name)) {
                 return mat[i].getMaterialCount();
             }
         }
@@ -60,6 +60,22 @@ public class MaterialDataHandler {
 
         }
         return mats;
+    }
+
+    public static String[] saveMaterials(){
+
+    String[] mats = new String[mat.length*2];
+
+    int j = 0;
+
+        for (int i = 0; i < mat.length; i++) {
+            mats[j] = mat[i].getMaterialName();
+            j +=1;
+            mats[j] = mat[i].getMaterialCount() + "";
+            j +=1;
+        }
+
+    return mats;
     }
 
 }

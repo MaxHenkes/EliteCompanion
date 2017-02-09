@@ -14,7 +14,9 @@ public class App {
     public JPanel panelMain;
     public JTextArea textAreaMain;
     private JButton buttonRun;
-
+    private JButton buttonClose;
+    static JFrame frame;
+    public static String text = new String();
 
     public App() {
 
@@ -26,12 +28,18 @@ public class App {
                 textAreaMain.setText(MaterialDataHandler.printMaterial());
             }
         });
+        buttonClose.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            System.exit(0);
+            }
+        });
     }
 
 
     public static void init() {
 
-        JFrame frame = new JFrame("Elite: Dangerous Companion");
+       frame = new JFrame("Elite: Dangerous Companion");
         frame.setContentPane(new App().panelMain);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
