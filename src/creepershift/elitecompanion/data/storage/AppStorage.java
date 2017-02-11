@@ -42,7 +42,7 @@ public class AppStorage extends Storage{
     Used to save data to the data file using our Linewriter class.
     TODO: Return if values were overwritten?
     */
-    public void saveData(String[] data) {
+    private void saveData() {
 
         /*
         Get the lines contained in our data file.
@@ -55,16 +55,16 @@ public class AppStorage extends Storage{
          */
         if (lineList.size() == 0) {
 
-            lineList.add(0, data[0]);
-            lineList.add(1, data[1]);
+            lineList.add(0, lastFile);
+            lineList.add(1, lastTimeStamp);
 
         }
         /*
         If the file already contains data, we overwrite it.
          */
         if (lineList.size() >= 2) {
-            lineList.set(0, data[0]);
-            lineList.set(1, data[1]);
+            lineList.set(0, lastFile);
+            lineList.set(1, lastTimeStamp);
 
 
         }
@@ -73,8 +73,6 @@ public class AppStorage extends Storage{
         This actually writes the data to the file.
          */
         LineWriter.writeFileLines(filePath, fileName, lineList);
-        readFile(); //is called so the new data is also loaded into memory.
-
     }
 
     public String lastFile() {
@@ -83,6 +81,26 @@ public class AppStorage extends Storage{
 
     public String lastTimeStamp() {
         return lastTimeStamp;
+    }
+
+    public String lastFileNumber(){
+
+        /*
+        Temp removal of all stuff we dont need in the filename.
+        Not pretty D: .
+         */
+        String[] s = lastFile.split("^Journal.");
+        System.out.println(s[0]);
+        String[] s1 = s[1].split(".01.log$");
+
+        return s1[0];
+    }
+
+    public void updateLastFile(String file){
+
+    lastFile = file;
+    saveData();
+
     }
 
 }

@@ -21,7 +21,7 @@ public class Main {
         MaterialDataHandler.init();
         appStorage = new AppStorage(Reference.dataDirectory, Reference.appDataFile);
         materialStorage = new MaterialStorage(Reference.dataDirectory, Reference.materialDataFile);
-
+        Parser.parseJournals();
 
         /*
         Currently just used to make sure stuff is working.
@@ -30,7 +30,7 @@ public class Main {
 
 
        //Tests the parser with a journal file I specify.
-       Parser.loadJournalFile(Reference.debugJournal, "Journal.170128220217.01.log");
+       //Parser.loadJournalFile(Reference.debugJournal, "Journal.170128220217.01.log");
 
         System.out.println(MaterialDataHandler.printMaterial());
 

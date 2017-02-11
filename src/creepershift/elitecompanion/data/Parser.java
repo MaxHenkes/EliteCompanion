@@ -13,12 +13,58 @@ import java.util.List;
  */
 public class Parser {
 
+  //  ArrayList<String> fileList = new ArrayList<String>();
+
+
+
+
+    public static void parseJournals(){
+
+        File[] journalFiles = new File(Reference.eliteDirectory).listFiles();
+
+        for (File file: journalFiles){
+
+            if (!file.getName().endsWith(".log")){
+                continue;
+            }
+
+            String[] s = file.getName().split("^Journal.");
+            String[] s1 = s[1].split(".01.log$");
+
+            /*
+            Since the filename gets larger the older the file gets,
+            we can easily check if the file is newer than the old one.
+             */
+
+            if ((Double.parseDouble(Main.appStorage.lastFileNumber()) < Double.parseDouble(s1[0]))){
+
+            loadJournalFile(file);
+            Main.appStorage.updateLastFile(file.getName().toString());
+
+            }
+
+
+//            if (file.getName().equalsIgnoreCase(Main.appStorage.lastFile())){
+
+
+
+
+
+
+        }
+
+
+
+
+
+    }
+
 
 
     /*
     Loads the journal file, reads it line by line and passes it on to be parsed.
      */
-    public static void loadJournalFile(File journal, String debugName) {
+    public static void loadJournalFile(File journal) {
 
 
         //TODO: Implement checking for file number and timestamp.
@@ -27,10 +73,10 @@ public class Parser {
                 System.out.println("Journal found.");
 
                 //Returns a list of Strings, each containing a line in the specified file.
-               List<String> journalLines = LineWriter.getFileLines(Reference.eliteDirectory, debugName);
+               List<String> journalLines = LineWriter.getFileLines(Reference.eliteDirectory, journal.getName());
 
                String timeStamp = null;
-               String fileName = debugName;
+               String fileName = journal.getName();
 
                //loops through the lines
                for(int i = 0 ; i < journalLines.size() ; i++ ) {
@@ -52,7 +98,7 @@ public class Parser {
                }
                 Main.materialStorage.saveFile();
                 //When we're done looping, we save the new data to our data file.
-               Main.appStorage.saveData(new String[]{fileName, timeStamp});
+             //  Main.appStorage.saveData(new String[]{fileName, timeStamp});
 
 
 
