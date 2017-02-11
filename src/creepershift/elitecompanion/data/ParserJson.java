@@ -4,7 +4,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-/**
+/**  EliteCompanion
  * Created by Max on 2/2/2017.
  */
 public class ParserJson {
@@ -30,11 +30,13 @@ public class ParserJson {
         }
     }
 
+
+
     /*
-    Reads out the material EVENT json line from a string.
-    Returns both the name and the count inside a String Array.
-     */
-    public static String[] parseMaterialString(String jsonString) {
+        Reads out the material EVENT json line from a string.
+        Returns both the name and the count inside a String Array.
+         */
+    public static String[] parseCollectedString(String jsonString) {
 
         JSONParser parser = new JSONParser();
 
@@ -44,11 +46,11 @@ public class ParserJson {
 
             JSONObject jsonObject = (JSONObject)obj;
             String name = (String)jsonObject.get("Name");
-            long count = (long)jsonObject.get("Count");
-            String count2 =  "" + count;
+            String count = String.valueOf(jsonObject.get("Count"));
+            String time = (String)jsonObject.get("timestamp");
 
 
-            return new String[]{name, count2};
+            return new String[]{name, count, time};
 
         } catch (ParseException e) {
             e.printStackTrace();

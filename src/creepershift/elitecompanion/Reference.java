@@ -2,7 +2,7 @@ package creepershift.elitecompanion;
 
 import java.io.File;
 
-/**
+/**  EliteCompanion
  * Created by Max on 2/9/2017.
  */
 public class Reference {

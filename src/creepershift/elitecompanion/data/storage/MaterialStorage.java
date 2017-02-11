@@ -1,12 +1,13 @@
 package creepershift.elitecompanion.data.storage;
 
+import creepershift.elitecompanion.Reference;
 import creepershift.elitecompanion.data.MaterialDataHandler;
 import creepershift.elitecompanion.util.LineWriter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/**  EliteCompanion
  * Created by Max on 2/9/2017.
  */
 public class MaterialStorage extends Storage {
@@ -40,19 +41,20 @@ public class MaterialStorage extends Storage {
         }
     }
 
+
     public void saveFile(){
 
-        String[] data = MaterialDataHandler.saveMaterials();
+        String[] data = MaterialDataHandler.saveMaterialString();
+
         List<String> lineList = new ArrayList<String>();
         for(int i = 0; i < data.length; i++) {
             lineList.add(data[i]);
             i++;
             lineList.add(data[i]);
         }
-
-        LineWriter.writeFileLines(filePath, fileName, lineList);
-
+        LineWriter.writeFileLines(Reference.dataDirectory, Reference.materialDataFile, lineList);
 
     }
+
 
 }

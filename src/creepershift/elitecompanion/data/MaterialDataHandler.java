@@ -3,75 +3,38 @@ package creepershift.elitecompanion.data;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/**${PACKAGE_NAME} for EliteCompanion
  * Created by Max on 2/9/2017.
  */
 public class MaterialDataHandler {
 
- // static MaterialData[] mat = new MaterialData[8];
-    static List<MaterialData> mat = new ArrayList<>();
-
-    public static void init(){
-
-        //no need to init ArrayList, will be initialized when it's being created
-
-        /*
-        Creates a new MaterialData array containing individual materialData objects,
-        initialized with the Reference.MaterialNames
-         */
-
-        /*
-        old ARRAY implementation
-
-        for (int i = 0; i <mat.length; i++){
-            mat[i] = new MaterialData(Reference.materialNames[i]);
-        }
-        */
-
-
-
-
-    }
-
-
+    private static List<MaterialData> mat = new ArrayList<>();
 
     /*
-    Adds material count
+    Adds material count.
+    If material doesn't exist, we initialize it.
+    This way we can easily add new materials on the fly.
+    This is also used to load the saved data back into the RAM.
      */
     public static void addEntry(String name, int count) {
-
-        /*
-        OLD ARRAY IMPLEMENTATION
-
-        for (int i = 0; i < mat.length; i++) {
-            if (mat[i].getMaterialName().equals(name)) {
-                mat[i].addCount(count);
-                break;
-            }
-        }
-        */
-
-
-        if (mat.size() == 0) {
+        if(containsMaterial(name) >= 0){
+            mat.get(containsMaterial(name)).addCount(count);
+        }else if(containsMaterial(name) == -1){
             mat.add(new MaterialData(name, count));
-        }else {
-
-            for (int i = 0; i < mat.size(); i++) {
-            if (mat.get(i).getMaterialName().equalsIgnoreCase(name)){
-                mat.get(i).addCount(count);
-                break;
-                }
-                if (i == mat.size()-1 && !mat.get(i).getMaterialName().equalsIgnoreCase(name))
-                    mat.add(new MaterialData(name, count));
-
-            }
         }
-
-
 
 
     }
 
+
+    public static int containsMaterial(String material){
+
+        for (int i = 0; i < mat.size(); i++){
+            if (mat.get(i).hasMaterial(material))
+                return i;
+        }
+        return -1;
+    }
 
     /*
     Returns the amount of a material
@@ -79,51 +42,24 @@ public class MaterialDataHandler {
     public static int getMaterialCount(String name) {
 
 
-        for (int i = 0; i < mat.size(); i++){
-            if (mat.get(i).getMaterialName().equalsIgnoreCase(name))
-                return mat.get(i).getMaterialCount();
-                    }
-
-
-        /*
-        OLD ARRAY IMPLEMENTATION
-        for (int i = 0; i < mat.length; i++) {
-            if (mat[i].getMaterialName().equals(name)) {
-                return mat[i].getMaterialCount();
-            }
+        for (MaterialData aMat : mat) {
+            if (aMat.getMaterialName().equalsIgnoreCase(name))
+                return aMat.getMaterialCount();
         }
-        */
+
         return 0;
 
     }
 
-    public static String printMaterial() {
-        String mats = new String();
+    public static void printMaterial() {
 
-
-        for (int i = 0; i < mat.size(); i++) {
-            mats = mats + mat.get(i).getMaterialName() + " " + mat.get(i).getMaterialCount() + "\n";
-
+        for (MaterialData aMat : mat) {
+            System.out.println(aMat.getMaterialName() + " " + aMat.getMaterialCount());
         }
-        return mats;
-
     }
 
-        /* OLD ARRAY IMPLEMENTATION
 
-
-
-
-        for (int i = 0; i < mat.length; i++) {
-            mats = mats + mat[i].getMaterialName() + " " + mat[i].getMaterialCount() + "\n";
-
-        }
-        return mats;
-    }
-
-    */
-
-    public static String[] saveMaterials(){
+    public static String[] saveMaterialString(){
 
 
 
@@ -133,30 +69,15 @@ public class MaterialDataHandler {
         for(int i = 0; i < mat.size(); i++){
             mats[j] = mat.get(i).getMaterialName();
             j++;
-            mats[j] = mat.get(i).getMaterialCount() + "";
+            mats[j] = String.valueOf(mat.get(i).getMaterialCount());
             j++;
         }
 
-
-
-        /* OLD ARRAY IMPLEMENTATION
-
-
-    String[] mats = new String[mat.length*2];
-
-    int j = 0;
-
-        for (int i = 0; i < mat.length; i++) {
-            mats[j] = mat[i].getMaterialName();
-            j +=1;
-            mats[j] = mat[i].getMaterialCount() + "";
-            j +=1;
-        }
-
-
-        */
-
     return mats;
     }
+
+
+
+
 
 }

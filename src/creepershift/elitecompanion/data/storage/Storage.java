@@ -5,15 +5,15 @@ import creepershift.elitecompanion.Reference;
 import java.io.File;
 import java.io.IOException;
 
-/**
+/**  EliteCompanion
  * Created by Max on 2/9/2017.
  */
 abstract class Storage {
 
-    File storageFile;
-    File storageFolder;
+    private File storageFile;
+    private File storageFolder;
 
-    public Storage(String path, String fileName){
+   public Storage(String path, String fileName){
 
         storageFile = new File(path + fileName);
         storageFolder = new File(path);

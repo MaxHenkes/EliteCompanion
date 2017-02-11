@@ -2,12 +2,13 @@ package creepershift.elitecompanion.data.storage;
 
 import creepershift.elitecompanion.util.LineWriter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-/**
+/** ${PACKAGE_NAME} for EliteCompanion
  * Created by Max on 2/9/2017.
  */
-public class AppStorage extends Storage{
+public class AppStorage extends Storage {
 
 
     private String lastFile;
@@ -40,34 +41,15 @@ public class AppStorage extends Storage{
 
     /*
     Used to save data to the data file using our Linewriter class.
-    TODO: Return if values were overwritten?
     */
     private void saveData() {
 
         /*
-        Get the lines contained in our data file.
+        Creates a new list and populates it with the data.
          */
-        List<String> lineList = LineWriter.getFileLines(filePath, fileName);
-
-
-        /*
-        If the file is empty, we just add new entries.
-         */
-        if (lineList.size() == 0) {
-
-            lineList.add(0, lastFile);
-            lineList.add(1, lastTimeStamp);
-
-        }
-        /*
-        If the file already contains data, we overwrite it.
-         */
-        if (lineList.size() >= 2) {
-            lineList.set(0, lastFile);
-            lineList.set(1, lastTimeStamp);
-
-
-        }
+        ArrayList<String> lineList = new ArrayList<String>();
+        lineList.add(0, lastFile);
+        lineList.add(1, lastTimeStamp);
 
         /*
         This actually writes the data to the file.
@@ -83,23 +65,27 @@ public class AppStorage extends Storage{
         return lastTimeStamp;
     }
 
-    public String lastFileNumber(){
+    public String lastFileNumber() {
 
+
+        if (lastFile == null){
+            return null;
+        }
         /*
-        Temp removal of all stuff we dont need in the filename.
+        Temp removal of all stuff we don't need in the filename.
         Not pretty D: .
          */
         String[] s = lastFile.split("^Journal.");
-        System.out.println(s[0]);
         String[] s1 = s[1].split(".01.log$");
 
         return s1[0];
     }
 
-    public void updateLastFile(String file){
+    public void updateData(String file, String time) {
 
-    lastFile = file;
-    saveData();
+        lastFile = file;
+        lastTimeStamp = time;
+        saveData();
 
     }
 

@@ -1,36 +1,36 @@
 package creepershift.elitecompanion.data;
 
-/**
+/**  EliteCompanion
  * Created by Max on 2/8/2017.
  */
-public class MaterialData {
+class MaterialData {
 
    private String materialName;
    private int materialCount;
 
-    public MaterialData(String name){
-        materialName = name;
-        materialCount = 0;
-    }
 
-    public MaterialData(String name, int count){
+    MaterialData(String name, int count){
         materialName = name;
         materialCount = count;
     }
 
-    public String getMaterialName(){
+    String getMaterialName(){
 
     return materialName;
     }
-    public int getMaterialCount(){
+    int getMaterialCount(){
 
         return materialCount;
     }
 
-    public void addCount(int count){
+    void addCount(int count){
 
         materialCount += count;
 
+    }
+
+    boolean hasMaterial(String mat){
+        return materialName.equalsIgnoreCase(mat);
     }
 
 }

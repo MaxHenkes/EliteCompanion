@@ -1,13 +1,11 @@
 package creepershift.elitecompanion.gui;
 
-import creepershift.elitecompanion.data.MaterialDataHandler;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-/**
+/**  EliteCompanion
  * Created by Max on 2/8/2017.
  */
 public class App {
@@ -16,7 +14,6 @@ public class App {
     private JButton buttonRun;
     private JButton buttonClose;
     static JFrame frame;
-    public static String text = new String();
 
     public App() {
 
@@ -25,7 +22,7 @@ public class App {
         buttonRun.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textAreaMain.setText(MaterialDataHandler.printMaterial());
+               // textAreaMain.setText(MaterialDataHandler.printMaterial());
             }
         });
         buttonClose.addActionListener(new ActionListener() {
