@@ -1,4 +1,4 @@
-package creepershift.elitecompanion.data;
+package creepershift.elitecompanion.util;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -51,6 +51,24 @@ public class ParserJson {
 
 
             return new String[]{name, count, time};
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static String parseMissionString(String jsonString) {
+
+        JSONParser parser = new JSONParser();
+
+        try {
+            Object obj = parser.parse(jsonString);
+
+            JSONObject jsonObject = (JSONObject)obj;
+
+            return (String)jsonObject.get("timestamp");
 
         } catch (ParseException e) {
             e.printStackTrace();

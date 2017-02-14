@@ -26,8 +26,17 @@ public class MaterialDataHandler {
 
     }
 
+    public static void removeEntry(String name, int count){
+        if(containsMaterial(name) >= 0){
+            mat.get(containsMaterial(name)).subtractCount(count);
+        }
+        else if(containsMaterial(name) == -1){
+            mat.add(new MaterialData(name, 0));
+        }
+    }
 
-    public static int containsMaterial(String material){
+
+    private static int containsMaterial(String material){
 
         for (int i = 0; i < mat.size(); i++){
             if (mat.get(i).hasMaterial(material))

@@ -29,6 +29,11 @@ class MaterialData {
 
     }
 
+    void subtractCount(int count){
+
+        if (materialCount >= count) materialCount -= count;
+    }
+
     boolean hasMaterial(String mat){
         return materialName.equalsIgnoreCase(mat);
     }

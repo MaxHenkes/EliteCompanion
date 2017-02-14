@@ -1,7 +1,5 @@
 package creepershift.elitecompanion.util;
 
-import creepershift.elitecompanion.Main;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
