@@ -9,6 +9,17 @@ import java.util.ArrayList;
 public class Mods {
 
 
+    /*
+    REMOVE LATER
+    archivedemissiondata = irregular emission data
+    emissiondata = unexpected emission data
+
+
+
+     */
+
+
+
     public static ArrayList<ModData> mods;
 
     public static void initMods(){
@@ -104,14 +115,24 @@ public class Mods {
         addModToData("beamlaser", "sturdy", new String[]{"tarquin"}, 5, new String[]{"highdensitycomposites", "molybdenum", "technetium"});
 
      /*
-     Beam Laser
+     Burst Laser
         Efficient Weapon
          */
-        addModToData("beamlaser", "efficient", new String[]{"dweller", "tarquin"}, 1, new String[]{"sulphur"});
-        addModToData("beamlaser", "efficient", new String[]{"dweller", "tarquin"}, 2, new String[]{"heatdispersionplate", "sulphur"});
-        addModToData("beamlaser", "efficient", new String[]{"dweller", "tarquin"}, 3, new String[]{"chromium", "scrambledemissiondata", "heatexchangers"});
-        addModToData("beamlaser", "efficient", new String[]{"tarquin"}, 4, new String[]{"heatvanes", "emissiondata", "zinc"});
-        addModToData("beamlaser", "efficient", new String[]{"tarquin"}, 5, new String[]{"highdensitycomposites", "molybdenum", "technetium"});
+        addModToData("burstlaser", "efficient", new String[]{"dweller", "tarquin"}, 1, new String[]{"sulphur"});
+        addModToData("burstlaser", "efficient", new String[]{"dweller", "tarquin"}, 2, new String[]{"heatdispersionplate", "sulphur"});
+        addModToData("burstlaser", "efficient", new String[]{"dweller", "tarquin"}, 3, new String[]{"chromium", "scrambledemissiondata", "heatexchangers"});
+        addModToData("burstlaser", "efficient", new String[]{"tarquin"}, 4, new String[]{"heatvanes", "archivedemissiondata", "selenium"});
+        addModToData("burstlaser", "efficient", new String[]{"tarquin"}, 5, new String[]{"protoheatradiators", "emissiondata", "cadmium"}); //TODO: Check again!
+
+     /*
+     Burst Laser
+        Focused Weapon
+         */
+        addModToData("burstlaser", "focused", new String[]{"dweller", "tarquin"}, 1, new String[]{"iron"});
+        addModToData("burstlaser", "focused", new String[]{"dweller", "tarquin"}, 2, new String[]{"conductivepolymers", "iron"});
+        addModToData("burstlaser", "focused", new String[]{"dweller", "tarquin"}, 3, new String[]{"chromium", "conductiveceramics", "iron"});
+        addModToData("burstlaser", "focused", new String[]{"tarquin"}, 4, new String[]{"heatvanes", "archivedemissiondata", "selenium"});
+        addModToData("burstlaser", "focused", new String[]{"tarquin"}, 5, new String[]{"protoheatradiators", "emissiondata", "cadmium"}); //TODO: Check again!
 
 
 
