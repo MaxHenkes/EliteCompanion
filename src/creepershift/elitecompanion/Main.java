@@ -19,13 +19,14 @@ public class Main {
     public static void main(String[] args){
 
 
+
         if (!test) {
 
 
             App.init();
             appStorage = new AppStorage(Reference.dataDirectory, Reference.appDataFile);
             materialStorage = new MaterialStorage(Reference.dataDirectory, Reference.materialDataFile);
-            Parser.parseJournals(true, "C:\\Users\\Max\\Desktop\\Elite\\Taverius\\");
+            Parser.parseJournals(true, "C:\\Users\\Max\\Desktop\\Elite\\bloodsteyn\\");
         /*
         Currently just used to make sure stuff is working.
         Will be reworked once the parts are all there.

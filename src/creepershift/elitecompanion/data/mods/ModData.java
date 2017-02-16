@@ -1,36 +1,53 @@
 package creepershift.elitecompanion.data.mods;
 
+import creepershift.elitecompanion.data.mods.data.TieredRecipe;
+
 /**
  * EliteCompanion
- * Created by Max on 2/13/2017.
+ * Created by Max on 2/14/2017.
  */
 public class ModData {
 
-    private String component;
-    private String mod;
-    private int tier;
-    private String[] materials;
-    private String[] engineers;
 
-    public int size;
+    private String name;
+    private TieredRecipe[] recipes;
 
 
-    public ModData(String componentName, String modName, String[] engineerNames, int modTier, String[] materialArray){
-
-        component = componentName;
-        engineers = engineerNames;
-        mod= modName;
-        tier = modTier;
-        materials = materialArray;
-        size = materialArray.length;
-
+    public ModData(String modName, int tier) {
+        name = modName;
+        recipes = new TieredRecipe[tier];
     }
 
+    public String getName() {
+        return name;
+    }
 
-    public int getTier() {return tier;}
-    public String getComponent(){return component;}
-    public String[] getMaterials(){return materials;}
-    public String getMod(){return mod;}
-    public String[] getEngineer(){return engineers;}
+    public void setRecipe(int tier, String[] recipe) {
+        if (tier <= recipes.length && tier > 0) {
+            recipes[tier - 1] = new TieredRecipe(tier, recipe);
+        }
+    }
+
+    public TieredRecipe[] getRecipes() {
+
+        return recipes;
+    }
+
+    public TieredRecipe getRecipeByTier(int tier) {
+        return recipes[tier - 1];
+    }
+
+    public TieredRecipe[] getRecipe(int maxtier) {
+
+
+        TieredRecipe[] recipeByTier = new TieredRecipe[maxtier];
+
+        for (int i = 0; i < maxtier; i++) {
+            recipeByTier[i] = recipes[i];
+        }
+
+        return recipeByTier;
+    }
+
 
 }
