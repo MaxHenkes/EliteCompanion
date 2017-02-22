@@ -1,6 +1,7 @@
-package creepershift.elitecompanion.data.storage;
+package creepershift.journalparser.app.storage;
 
-import creepershift.elitecompanion.Reference;
+
+import creepershift.journalparser.Reference;
 
 import java.io.File;
 import java.io.IOException;

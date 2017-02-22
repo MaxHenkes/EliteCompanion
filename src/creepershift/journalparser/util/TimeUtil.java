@@ -1,8 +1,10 @@
-package creepershift.elitecompanion.util;
+package creepershift.journalparser.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * EliteCompanion
@@ -23,7 +25,6 @@ public class TimeUtil {
         try {
             Date date1 = sdf.parse(d1);
             Date date2 = sdf.parse(d2);
-
 
             if(date1.after(date2))
                 return true;
@@ -53,6 +54,33 @@ public class TimeUtil {
 
 
         return false;
+    }
+
+    static String returnHHMM(String time){
+
+        try {
+            Date date = sdf.parse(time);
+
+
+            return String.valueOf(date.getHours()) + ":" + date.getMinutes();
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+
+
+        return "[ERRTIME]";
+
+    }
+
+
+    public static String getTime(){
+
+        Calendar cal = new GregorianCalendar();
+
+
+
+
+        return "[" + cal.getTime().getHours() + ":" + cal.getTime().getMinutes() + "] ";
     }
 
 

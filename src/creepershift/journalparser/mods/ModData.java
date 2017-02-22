@@ -1,6 +1,7 @@
-package creepershift.elitecompanion.data.mods;
+package creepershift.journalparser.mods;
 
-import creepershift.elitecompanion.data.mods.data.TieredRecipe;
+
+import creepershift.journalparser.mods.data.TieredRecipe;
 
 /**
  * EliteCompanion

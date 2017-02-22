@@ -1,4 +1,4 @@
-package creepershift.elitecompanion.data;
+package creepershift.journalparser.app;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class MaterialDataHandler {
 
-    private static List<MaterialData> mat = new ArrayList<>();
+    public static List<MaterialData> mat = new ArrayList<>();
 
     /*
     Adds material count.
@@ -65,6 +65,17 @@ public class MaterialDataHandler {
         for (MaterialData aMat : mat) {
             System.out.println(aMat.getMaterialName() + " " + aMat.getMaterialCount());
         }
+    }
+
+    public static String presentMaterials(){
+
+        String mats = new String();
+
+        for(MaterialData aMat : mat){
+            mats = mats + aMat.getMaterialName() + ": " + aMat.getMaterialCount() + "\n";
+        }
+
+        return mats;
     }
 
 

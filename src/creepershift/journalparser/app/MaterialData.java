@@ -1,9 +1,9 @@
-package creepershift.elitecompanion.data;
+package creepershift.journalparser.app;
 
 /**  EliteCompanion
  * Created by Max on 2/8/2017.
  */
-class MaterialData {
+public class MaterialData {
 
    private String materialName;
    private int materialCount;
@@ -14,11 +14,11 @@ class MaterialData {
         materialCount = count;
     }
 
-    String getMaterialName(){
+   public String getMaterialName(){
 
     return materialName;
     }
-    int getMaterialCount(){
+   public int getMaterialCount(){
 
         return materialCount;
     }

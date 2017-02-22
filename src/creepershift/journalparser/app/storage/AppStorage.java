@@ -1,6 +1,6 @@
-package creepershift.elitecompanion.data.storage;
+package creepershift.journalparser.app.storage;
 
-import creepershift.elitecompanion.util.LineWriter;
+import creepershift.journalparser.util.LineWriter;
 
 import java.util.ArrayList;
 import java.util.List;

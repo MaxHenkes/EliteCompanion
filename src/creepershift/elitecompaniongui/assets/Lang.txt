@@ -1,0 +1,102 @@
+conductivepolymers>Conductive Polymers
+chemicalmanipulators>Chemical Manipulators
+refinedfocuscrystals>Refined Focus Crystals
+shielddensityreports>Untypical Shield Scans
+biotechconductors>Biotech Conductors
+consumerfirmware>Modified Consumer Firmware
+fsdtelemetry>Anomalous FSD Telemetry
+electrochemicalarrays>Electrochemical Arrays
+conductivecomponents>Conductive Components
+securityfirmware>Security Firmware Patch
+emissiondata>Unexpected Emission Data
+precipitatedalloys>Precipitated Alloys
+focuscrystals>Focus Crystals
+scanarchives>Unidentified Scan Archives
+shieldcyclerecordings>Distorted Shield Cycle Recordings
+zirconium>Zirconium
+iron>Iron
+vanadium>Vanadium
+sulphur>Sulphur
+encryptedfiles>Unusual Encrypted Files
+scandatabanks>Classified Scan Databanks
+nickel>Nickel
+cadmium>Cadmium
+manganese>Manganese
+polonium>polonium
+tungsten>Tungsten
+phosphorus>Phosphorus
+carbon>Carbon
+compoundshielding>Compound Shielding
+bulkscandata>Anomalous Bulk Scan Data
+legacyfirmware>Specialised Legacy Firmware
+shieldsoakanalysis>Inconsistent Shield Soak Analysis
+mechanicalcomponents>Mechanical Components
+decodedemissiondata>Decoded Emission Data
+encodedscandata>Divergent Scan Data
+heatconductionwiring>Heat Conductive Wiring
+mechanicalscrap>Mechanical Scrap
+exquisitefocuscrystals>Exquisite Focus Crystals
+disruptedwakeechoes>Atypical Disrupted Wake Echoes
+wakesolutions>Strange Wake Solutions
+hyperspacetrajectories>Eccentric Hyperspace Trajectories
+shieldpatternanalysis>Aberrant Shield Pattern Analysis
+dataminedwake>Datamined Wake Exceptions
+ruthenium>Ruthenium
+selenium>Selenium
+yttrium>Yttrium
+germanium>Germanium
+arsenic>Arsenic
+mercury>Mercury
+symmetrickeys>Open Symmetric Keys
+embeddedfirmware>Modified Embedded Firmware
+encryptioncodes>Tagged Encryption Codes
+configurablecomponents>Configurable Components
+highdensitycomposites>High Density Composites
+uncutfocuscrystals>Flawed Focus Crystals
+mechanicalequipment>Mechanical Equipment
+chromium>Chromium
+zinc>Zinc
+archivedemissiondata>Irregular Emission Data
+chemicaldistillery>Chemical Distillery
+heatdispersionplate>Heat Dispersion Plate
+chemicalprocessors>Chemical Processors
+conductiveceramics>Conductive Ceramics
+wornshieldemitters>Worn Shield Emitters
+basicconductors>Basic Conductors
+heatexchangers>Heat Exchangers
+heatvanes>Heat Vanes
+tin>Tin
+niobium>Niobium
+shieldemitters>Shield Emitters
+shieldingsensors>Shielding Sensors
+shieldfrequencydata>Peculiar Shield Frequency Data
+salvagedalloys>Salvaged Alloys
+protolightalloys>Proto Light Alloys
+galvanisingalloys>Galvanising Alloys
+phasealloys>Phase Alloys
+gridresistors>Grid Resistors
+fedcorecomposites>Core Dynamics Composites
+fedproprietarycomposites>Proprietary Composites
+protoradiolicalloys>Proto Radiolic Alloys
+classifiedscandata>Classified Scan Databanks
+industrialfirmware>Cracked Industrial Firmware
+molybdenum>Molybdenum
+polymercapacitors>Polymer Capacitors
+thermicalloys>Thermic Alloys
+pharmaceuticalisolators>Pharmaceutical Isolators
+imperialshielding>Imperial Shielding
+antimony>Antimony
+compactemissionsdata>Abnormal Compact Emission Data
+hybridcapacitors>Hybrid Capacitors
+improvisedcomponents>Improvised Components
+tellurium>Tellurium
+heatresistantceramics>Heat Resistant Ceramics
+scrambledemissiondata>Exceptional Scrambled Emission Data
+temperedalloys>Tempered Alloys
+crystalshards>Crystal Shards
+encryptionarchives>Atypical Encryption Archives
+adaptiveencryptors>Adaptive Encryptors Capture
+hnshockmount>HN Shock Mount
+protoheatradiators>Proto Heat Radiators
+efficient>Efficient
+cannon>Cannon

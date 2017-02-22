@@ -1,4 +1,4 @@
-package creepershift.elitecompanion;
+package creepershift.journalparser;
 
 import java.io.File;
 

@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="unnamed">
-    <output-path>$PROJECT_DIR$/out/artifacts/unnamed</output-path>
-    <root id="archive" name="unnamed.jar">
+  <artifact type="jar" build-on-make="true" name="EliteCompanion">
+    <output-path>$PROJECT_DIR$/out/artifacts/EliteCompanion</output-path>
+    <root id="archive" name="EliteCompanion.jar">
       <element id="file-copy" path="$USER_HOME$/Downloads/json-simple-1.1.1.jar" />
       <element id="file-copy" path="$USER_HOME$/Downloads/gson-2.8.0.jar" />
       <element id="module-output" name="EliteCompanion" />

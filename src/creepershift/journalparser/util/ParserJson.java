@@ -1,4 +1,4 @@
-package creepershift.elitecompanion.util;
+package creepershift.journalparser.util;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -51,6 +51,31 @@ public class ParserJson {
 
 
             return new String[]{name, count, time};
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
+    public static String[] parseStartupString(String jsonString) {
+
+        JSONParser parser = new JSONParser();
+
+        try {
+            Object obj = parser.parse(jsonString);
+
+
+            JSONObject jsonObject = (JSONObject)obj;
+            String name = (String)jsonObject.get("Commander");
+            String credits = String.valueOf(jsonObject.get("Credits"));
+            String ship = (String)jsonObject.get("Ship");
+            String time = (String)jsonObject.get("timestamp");
+
+
+            return new String[]{name, credits, ship, time};
 
         } catch (ParseException e) {
             e.printStackTrace();

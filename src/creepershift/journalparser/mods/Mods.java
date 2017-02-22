@@ -1,4 +1,10 @@
-package creepershift.elitecompanion.data.mods;
+package creepershift.journalparser.mods;
+
+import creepershift.journalparser.mods.data.ComponentCategory;
+import creepershift.journalparser.mods.data.ComponentComponent;
+import creepershift.journalparser.mods.data.ComponentMod;
+
+import java.util.ArrayList;
 
 /**
  * EliteCompanion
@@ -13,9 +19,12 @@ public class Mods {
 
 
 
+    public ComponentCategory weapons, internals, optionals, utility;
 
+    public static ArrayList<ComponentCategory> componentCategories = new ArrayList();
 
     public void initMods(){
+
 
         armorPowerPlant = new ModData("armorPowerPlant", 5);
         armorPowerPlant.setRecipe(1, new String[]{"wornshieldemitters"});
@@ -317,6 +326,40 @@ public class Mods {
         weapDist.setRecipe(2, new String[]{"conductivecomponents","sulphur"});
         weapDist.setRecipe(3, new String[]{"bulkscandata","hybridcapacitors", "selenium"});
 
+
+
+        weapons = new ComponentCategory("weapons");
+        internals = new ComponentCategory("internals");
+        optionals = new ComponentCategory("optionals");
+        utility = new ComponentCategory("utility");
+
+        ComponentComponent armor = new ComponentComponent("armor");
+        armor.addComponent(new ComponentMod("armor", armorBlastRes, 3, new String[]{"ryder", "jean"}));
+
+
+
+
+
+
+
+        ComponentComponent cannons = new ComponentComponent("cannon");
+
+        cannons.addComponent(new ComponentMod("cannon", efficient, 5, new String[]{"blaster", "sarge"}));
+
+
+        weapons.addToCategory(cannons);
+        componentCategories.add(weapons);
+
+    }
+
+
+    public static ComponentCategory getCategory(String name){
+
+        for(ComponentCategory comp : componentCategories)
+            if(comp.returnCategoryName().equalsIgnoreCase(name))
+                return comp;
+
+        return null;
     }
 
 

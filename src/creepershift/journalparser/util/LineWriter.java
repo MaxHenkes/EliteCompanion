@@ -1,4 +1,4 @@
-package creepershift.elitecompanion.util;
+package creepershift.journalparser.util;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/**  EliteCompanionGui
  * Created by Max on 2/2/2017.
  */
 public class LineWriter {

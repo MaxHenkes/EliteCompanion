@@ -1,4 +1,4 @@
-package creepershift.elitecompanion.data.mods.data;
+package creepershift.journalparser.mods.data;
 
 /**
  * EliteCompanion

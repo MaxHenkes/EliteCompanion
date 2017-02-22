@@ -1,8 +1,8 @@
-package creepershift.elitecompanion.data.storage;
+package creepershift.journalparser.app.storage;
 
-import creepershift.elitecompanion.Reference;
-import creepershift.elitecompanion.data.MaterialDataHandler;
-import creepershift.elitecompanion.util.LineWriter;
+import creepershift.journalparser.Reference;
+import creepershift.journalparser.app.MaterialDataHandler;
+import creepershift.journalparser.util.LineWriter;
 
 import java.util.ArrayList;
 import java.util.List;
