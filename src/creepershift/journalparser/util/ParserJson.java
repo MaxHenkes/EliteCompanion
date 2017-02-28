@@ -1,10 +1,12 @@
 package creepershift.journalparser.util;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-/**  EliteCompanion
+/**
+ * EliteCompanion
  * Created by Max on 2/2/2017.
  */
 public class ParserJson {
@@ -21,7 +23,7 @@ public class ParserJson {
             Object obj = parser.parse(jsonString);
 
 
-            JSONObject jsonObject = (JSONObject)obj;
+            JSONObject jsonObject = (JSONObject) obj;
 
             System.out.println(jsonObject);
 
@@ -30,6 +32,22 @@ public class ParserJson {
         }
     }
 
+
+    public static String parseVersion(String jsonString, String key) {
+        JSONParser parser = new JSONParser();
+
+        try {
+            Object obj = parser.parse(jsonString);
+            JSONObject jsonObject = (JSONObject) obj;
+
+            return (String) jsonObject.get(key);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
 
     /*
@@ -44,10 +62,10 @@ public class ParserJson {
             Object obj = parser.parse(jsonString);
 
 
-            JSONObject jsonObject = (JSONObject)obj;
-            String name = (String)jsonObject.get("Name");
+            JSONObject jsonObject = (JSONObject) obj;
+            String name = (String) jsonObject.get("Name");
             String count = String.valueOf(jsonObject.get("Count"));
-            String time = (String)jsonObject.get("timestamp");
+            String time = (String) jsonObject.get("timestamp");
 
 
             return new String[]{name, count, time};
@@ -68,11 +86,11 @@ public class ParserJson {
             Object obj = parser.parse(jsonString);
 
 
-            JSONObject jsonObject = (JSONObject)obj;
-            String name = (String)jsonObject.get("Commander");
+            JSONObject jsonObject = (JSONObject) obj;
+            String name = (String) jsonObject.get("Commander");
             String credits = String.valueOf(jsonObject.get("Credits"));
-            String ship = (String)jsonObject.get("Ship");
-            String time = (String)jsonObject.get("timestamp");
+            String ship = (String) jsonObject.get("Ship");
+            String time = (String) jsonObject.get("timestamp");
 
 
             return new String[]{name, credits, ship, time};
@@ -91,9 +109,27 @@ public class ParserJson {
         try {
             Object obj = parser.parse(jsonString);
 
-            JSONObject jsonObject = (JSONObject)obj;
+            JSONObject jsonObject = (JSONObject) obj;
 
-            return (String)jsonObject.get("timestamp");
+            return (String) jsonObject.get("timestamp");
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static JSONArray parseMaterialDump(String jsonString) {
+        JSONParser parser = new JSONParser();
+
+
+        try {
+            Object obj = parser.parse(jsonString);
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray jarray = (JSONArray)jsonObject.get("Raw");
+
+            return jarray;
 
         } catch (ParseException e) {
             e.printStackTrace();

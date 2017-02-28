@@ -1,7 +1,7 @@
 package creepershift.elitecompaniongui;
 
 import creepershift.elitecompaniongui.lang.Lang;
-import creepershift.journalparser.ParserObject;
+import creepershift.journalparser.ParserMain;
 import creepershift.journalparser.Reference;
 import creepershift.journalparser.app.storage.AppStorage;
 import creepershift.journalparser.app.storage.MaterialStorage;
@@ -17,7 +17,7 @@ import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 
-    public ParserObject parser;
+    public ParserMain  parser;
     public static LogOutput logOutput;
     public static EngineerController controller;
     public static Lang lang;
@@ -49,8 +49,9 @@ public class Main extends Application {
         lang = new Lang(getClass().getResourceAsStream("/creepershift/elitecompaniongui/assets/Lang.txt"));
 
 
-        parser = new ParserObject(new AppStorage(Reference.dataDirectory, Reference.appDataFile), new MaterialStorage(Reference.dataDirectory, Reference.materialDataFile), logOutput);
-        controller.controller.displayTable();
+      //  parser = new ParserObject(new AppStorage(Reference.dataDirectory, Reference.appDataFile), new MaterialStorage(Reference.dataDirectory, Reference.materialDataFile), logOutput);
+      //  controller.controller.displayTable();
+        parser = new ParserMain(new AppStorage(Reference.dataDirectory, Reference.appDataFile), new MaterialStorage(Reference.dataDirectory, Reference.materialDataFile), logOutput);
     }
 
 

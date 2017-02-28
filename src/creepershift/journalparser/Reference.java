@@ -15,4 +15,7 @@ public class Reference {
     public static final boolean DEBUG = true;
     public static final String appDataFile = "EliteData.txt";
     public static final String materialDataFile = "MaterialData.txt";
+
+    //TODO: get Commander name!
+    public static final String COMMANDER_NAME = "CreeperShift";
 }
