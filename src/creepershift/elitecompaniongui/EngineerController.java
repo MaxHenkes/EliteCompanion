@@ -1,22 +1,27 @@
 package creepershift.elitecompaniongui;
 
-import creepershift.elitecompaniongui.data.Table;
-import creepershift.journalparser.app.MaterialData;
-import creepershift.journalparser.app.MaterialDataHandler;
 import creepershift.journalparser.mods.Mods;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.DragEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class EngineerController implements Initializable {
 
 
     public TextArea consoleLog;
@@ -29,15 +34,9 @@ public class Controller implements Initializable {
     public Button addToMyModsButton;
     public ComboBox<String> boxTier;
     public TextArea modIngredientList;
-
-    @FXML
-    private TableView<Table> table;
-
-    @FXML
-    private TableColumn<Table, String> materialTable;
-
-    @FXML
-    private TableColumn<Table, Integer> amountTable;
+    public MaterialController controller;
+    public Stage mainStage;
+    private Stage stage;
 
 
     @Override
@@ -46,8 +45,7 @@ public class Controller implements Initializable {
         commanderID.setEditable(false);
         creditID.setEditable(false);
         shipID.setEditable(false);
-        materialTable.setCellValueFactory(new PropertyValueFactory<Table, String>("matName"));
-        amountTable.setCellValueFactory(new PropertyValueFactory<Table, Integer>("matCount"));
+
 
         modDBox.setDisable(true);
         moduleDBox.setDisable(true);
@@ -57,6 +55,21 @@ public class Controller implements Initializable {
         modIngredientList.setEditable(false);
 
         categoryDBox.setItems(FXCollections.observableArrayList("Weapons", "Core Internals", "Optional Internals", "Utility"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("materials.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        controller = loader.getController();
+        stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Materials");
+        stage.setResizable(false);
+        stage.initStyle(StageStyle.UNDECORATED);
+
 
 
     }
@@ -90,29 +103,18 @@ public class Controller implements Initializable {
     }
 
 
-    public void displayTable() {
 
-        ObservableList<Table> data = FXCollections.observableArrayList();
-
-        for (MaterialData mat : MaterialDataHandler.mat) {
-
-            data.add(new Table(mat.getMaterialCount(), Main.lang.getLangName(mat.getMaterialName())));
-        }
-
-        table.setItems(data);
-
-    }
 
     public void onCategoryBoxAction(ActionEvent actionEvent) {
 
-       setBoxForContent(moduleDBox, categoryDBox.getValue().toLowerCase());
+       setBoxForContent(moduleDBox, Main.lang.getTechName(categoryDBox.getValue()));
 
 
     }
 
     public void onModuleBoxAction(ActionEvent actionEvent) {
 
-        setBoxForContent(modDBox, moduleDBox.getValue().toLowerCase());
+        setBoxForContent(modDBox, moduleDBox.getValue());
 
     }
 
@@ -133,8 +135,8 @@ public class Controller implements Initializable {
 
         modIngredientList.setVisible(true);
 
-        modIngredientList.setText(Main.mods.weapons.getComponent(Main.techLang.getLangName(moduleDBox.getValue())).getMod(Main.techLang.getLangName(modDBox.getValue()))
-                .getRecipeForTiers()[Integer.parseInt(Main.techLang.getLangName(boxTier.getValue())) -1]);
+        modIngredientList.setText(Mods.getCategory(Main.lang.getTechName(categoryDBox.getValue())).getComponent(moduleDBox.getValue()).getMod(Main.lang.getTechName(modDBox.getValue()))
+                .getRecipeForTiers()[Integer.parseInt(Main.lang.getTechName(boxTier.getValue()))]);
 
 
     }
@@ -146,9 +148,12 @@ public class Controller implements Initializable {
         if (box.equals(moduleDBox)) {
             box.setDisable(false);
             box.setItems(FXCollections.observableArrayList(Mods.getCategory(name).returnComponents()));
+            modDBox.setDisable(true);
+            boxTier.setDisable(true);
         } else if(box.equals(modDBox)){
             box.setDisable(false);
-            box.setItems(FXCollections.observableArrayList(Main.mods.weapons.getComponent(name).returnMods()));
+            box.setItems(FXCollections.observableArrayList(Mods.getCategory(Main.lang.getTechName(categoryDBox.getValue())).getComponent(name).returnMods()));
+            boxTier.setDisable(true);
         }else if(box.equals(boxTier)){
             addToMyModsButton.setVisible(true);
             box.setDisable(false);
@@ -162,5 +167,47 @@ public class Controller implements Initializable {
 
     }
 
+    @FXML
+    public void onShowMaterialsButton(ActionEvent actionEvent) throws IOException {
+
+
+
+        if(stage.isShowing()) {
+
+            stage.close();
+
+
+        }else{
+
+            stage.setX(mainStage.getX() + mainStage.getWidth()-5);
+            stage.setY(mainStage.getY());
+            stage.show();
+
+        }
+
+    }
+
+    public void onbutton(ActionEvent actionEvent) {
+
+        System.out.println(stage.getX() +" - " + stage.getY());
+    }
+
+    @FXML
+    public void onWindowDragDone(DragEvent dragEvent) {
+
+        System.out.println(mainStage.getX() + mainStage.getWidth());
+
+        stage.setX(mainStage.getX() + mainStage.getWidth());
+        stage.setY(mainStage.getY());
+
+
+    }
+
+    public void closeStage(){
+        stage.close();
+    }
+
+    //  x       y
+    //1254.0 - 175.0
 
 }

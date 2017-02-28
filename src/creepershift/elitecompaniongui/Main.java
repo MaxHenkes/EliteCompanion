@@ -19,9 +19,8 @@ public class Main extends Application {
 
     public ParserObject parser;
     public static LogOutput logOutput;
-    public static Controller controller;
+    public static EngineerController controller;
     public static Lang lang;
-    public static Lang techLang;
     public static Mods mods;
 
     @Override
@@ -31,11 +30,16 @@ public class Main extends Application {
         controller = loader.getController();
         primaryStage.setTitle("Elite: Companion");
         primaryStage.setScene(new Scene(root, 600, 475));
+        primaryStage.setResizable(false);
         primaryStage.show();
+        controller.mainStage = primaryStage;
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
+
+
                 parser.stopThread();
+                controller.closeStage();
             }
         });
         mods = new Mods();
@@ -43,11 +47,10 @@ public class Main extends Application {
         logOutput = new LogOutput(13);
         logOutput.addNotFormattedString("Welcome Commander!");
         lang = new Lang(getClass().getResourceAsStream("/creepershift/elitecompaniongui/assets/Lang.txt"));
-        techLang = new Lang(getClass().getResourceAsStream("/creepershift/elitecompaniongui/assets/TechLang.txt"));
 
 
         parser = new ParserObject(new AppStorage(Reference.dataDirectory, Reference.appDataFile), new MaterialStorage(Reference.dataDirectory, Reference.materialDataFile), logOutput);
-        controller.displayTable();
+        controller.controller.displayTable();
     }
 
 

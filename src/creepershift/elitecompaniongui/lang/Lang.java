@@ -64,6 +64,14 @@ public class Lang {
         return name;
     }
 
+    public String getTechName(String name) {
+
+        if (langName.contains(name))
+            return techName.get(langName.indexOf(name));
+
+        return name;
+    }
+
 
 }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.*?>
+<AnchorPane maxHeight="450.0" maxWidth="-Infinity" minHeight="450.0" minWidth="-Infinity" prefHeight="400.0" prefWidth="303.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="creepershift.elitecompaniongui.MaterialController">
+   <children>
+      <TableView fx:id="table" editable="true" prefHeight="400.0" prefWidth="303.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="materialTable" prefWidth="233.0" resizable="false" text="Material" />
+          <TableColumn fx:id="amountTable" prefWidth="69.0" resizable="false" text="Amount" />
+        </columns>
+
+      </TableView>
+   </children>
+</AnchorPane>

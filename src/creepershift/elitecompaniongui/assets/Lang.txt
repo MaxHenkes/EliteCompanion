@@ -98,5 +98,50 @@ encryptionarchives>Atypical Encryption Archives
 adaptiveencryptors>Adaptive Encryptors Capture
 hnshockmount>HN Shock Mount
 protoheatradiators>Proto Heat Radiators
-efficient>Efficient
+beamlaser>Beam Laser
+fieldMainetenance>Auto Field-Maintenance
+burstlaser>Burst Laser
 cannon>Cannon
+armor>Armor
+chaff>Chaff Launcher
+collectorLimpet>Collector Limpet Controller
+electronicCounter>Electronic Counter Measure
+fragmentCannon>Fragment Cannon
+fsd>Frame Shift Drive
+fsdInterdictor>Frame Shift Drive Interdictor
+fsdWakeScanner>Frame Shift Drive Wake Scanner
+fuelscoop>Fuel Scoop
+fuelLimpet>Fuel Transfer Limpet
+hatchLimpet>Hatch Limpet Controller
+heatsink>Heat Sink Launcher
+hullReinforcement>Hull Reinforcement Package
+kws>Kill Warrant Scanner
+lifesupport>Life Support
+cargoscanner>Manifest Scanner
+minelauncher>Mine Launcher
+missiles>Missile Rack
+multicannon>Multi-Cannon
+plasma>Plasma Accelerator
+pointdefence>Point Defence
+powerdist>Power Distributor
+powerplant>Power Plant
+prospectLimpet>Prospector Limpet
+pulselaser>Pulse Laser
+railgun>Railgun
+refinery>Refinery
+shieldBooster>Shield Booster
+shieldcell>Shield Cell Bank
+shield>Shield Generator
+thrusters>Thrusters
+torpedo>Torpedo Pylon
+weapons>Weapons
+internals>Core Internals
+optionals>Optional Internals
+utility>Utility
+0>Grade 1
+1>Grade 2
+2>Grade 3
+3>Grade 4
+4>Grade 5
+efficient>Efficient
+mineLauncher>Mine Launcher

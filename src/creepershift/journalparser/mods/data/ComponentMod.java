@@ -13,17 +13,17 @@ public class ComponentMod {
     int componentTiers;
     private TieredRecipe[] recipes;
     String component;
-    String[] engineers;
     ModData mod;
+    EngineerTier engineerTiers;
 
 
-    public ComponentMod(String componentName, ModData modName, int tiers, String[] engineerNames) {
+    public ComponentMod(String componentName, ModData modName, int tiers, EngineerTier eng) {
 
         component = componentName;
         recipes = modName.getRecipe(tiers);
         componentTiers = tiers;
-        engineers = engineerNames;
         mod = modName;
+        engineerTiers = eng;
 
     }
 
