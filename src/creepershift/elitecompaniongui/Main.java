@@ -50,8 +50,8 @@ public class Main extends Application {
 
 
       //  parser = new ParserObject(new AppStorage(Reference.dataDirectory, Reference.appDataFile), new MaterialStorage(Reference.dataDirectory, Reference.materialDataFile), logOutput);
-      //  controller.controller.displayTable();
         parser = new ParserMain(new AppStorage(Reference.dataDirectory, Reference.appDataFile), new MaterialStorage(Reference.dataDirectory, Reference.materialDataFile), logOutput);
+
     }
 
 

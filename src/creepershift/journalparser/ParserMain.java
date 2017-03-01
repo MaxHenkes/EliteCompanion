@@ -15,23 +15,20 @@ public class ParserMain extends Thread {
 
     private AppStorage appStorage;
     private MaterialStorage materialStorage;
-    LogOutput log;
+    private LogOutput log;
     private boolean doParse = true;
     private int sleepTimer = 5000;
-    private LogOutput logOutput;
     private volatile Thread thread;
-    ParseJournal parser;
+    private boolean startup = true;
+    private String commander;
 
     public ParserMain(AppStorage appst, MaterialStorage matst, LogOutput log) {
 
         appStorage = appst;
         materialStorage = matst;
-        logOutput = log;
+        this.log = log;
         thread = new Thread(this);
         thread.start();
-        parser = new ParseJournal(Reference.COMMANDER_NAME);
-
-
     }
 
 
@@ -47,7 +44,17 @@ public class ParserMain extends Thread {
 
 
             File[] journals = new File(Reference.eliteDirectory).listFiles();
+
             if (journals != null) {
+
+
+                if (startup) {
+                    ParseJournal parser = new ParseJournal(getLatestFile(journals), materialStorage, appStorage, log);
+
+                    startup = false;
+                    continue;
+                }
+
 
                 for (File file : journals) {
 
@@ -61,11 +68,11 @@ public class ParserMain extends Thread {
 
                         if (appStorage.lastFileNumber() == null || (Double.parseDouble(appStorage.lastFileNumber()) <= Double.parseDouble(s1[0]))) {
 
-                            parser.loadFile(file);
+                            ParseJournal parser = new ParseJournal(file, materialStorage, appStorage, log);
 
                         }
 
-                    }catch(ArrayIndexOutOfBoundsException e){
+                    } catch (ArrayIndexOutOfBoundsException e) {
                         e.printStackTrace();
                     }
                 }
@@ -94,4 +101,34 @@ public class ParserMain extends Thread {
     public void setSleepTimer(int time) {
         sleepTimer = time;
     }
+
+    private File getLatestFile(File[] files) {
+
+        File latestFile = null;
+        String latestString = null;
+
+        for (File file : files) {
+
+            try {
+                String[] s = file.getName().split("^Journal.");
+                String[] s1 = s[1].split(".01.log$");
+
+                if (latestFile == null) {
+                    latestFile = file;
+                    latestString = s1[0];
+                } else if (Double.parseDouble(s1[0]) > Double.parseDouble(latestString)) {
+                    latestFile = file;
+                    latestString = s1[0];
+                }
+
+
+            } catch (ArrayIndexOutOfBoundsException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        return latestFile;
+    }
+
 }

@@ -78,6 +78,10 @@ public class ParserJson {
     }
 
 
+
+
+
+
     public static String[] parseStartupString(String jsonString) {
 
         JSONParser parser = new JSONParser();
@@ -120,16 +124,32 @@ public class ParserJson {
         return null;
     }
 
-    public static JSONArray parseMaterialDump(String jsonString) {
+    public static String[][] parseMaterialDump(String jsonString, String type) {
         JSONParser parser = new JSONParser();
 
 
         try {
             Object obj = parser.parse(jsonString);
             JSONObject jsonObject = (JSONObject) obj;
-            JSONArray jarray = (JSONArray)jsonObject.get("Raw");
+            JSONArray jarray = (JSONArray)jsonObject.get(type);
 
-            return jarray;
+
+            String[][] returnString = new String[2][jarray.size()];
+
+            for (int i = 0; i < jarray.size(); i++) {
+
+                JSONObject jarrayobj = (JSONObject)jarray.get(i);
+
+                String name = (String) jarrayobj.get("Name");
+                String count = String.valueOf(jarrayobj.get("Count"));
+
+              //  System.out.println(name);
+              //  System.out.println(count);
+                returnString[0][i] = name;
+                returnString[1][i] = count;
+
+            }
+            return returnString;
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -137,6 +157,5 @@ public class ParserJson {
 
         return null;
     }
-
 
 }

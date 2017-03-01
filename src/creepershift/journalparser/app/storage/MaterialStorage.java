@@ -19,7 +19,7 @@ public class MaterialStorage extends Storage {
         super(path, name);
         filePath = path;
         fileName = name;
-        readFile();
+       // readFile();
     }
 
 

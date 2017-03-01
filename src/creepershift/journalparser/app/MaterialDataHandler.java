@@ -8,6 +8,11 @@ import java.util.List;
  */
 public class MaterialDataHandler {
 
+    /*
+    TODO: REWIRE THE ENTIRE FUCKING THING, THANKS UPDATE! :)
+     */
+
+
     public static List<MaterialData> mat = new ArrayList<>();
 
     /*
