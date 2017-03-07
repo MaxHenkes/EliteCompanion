@@ -42,7 +42,7 @@ public class AppStorage extends Storage {
     /*
     Used to save data to the data file using our Linewriter class.
     */
-    private void saveData() {
+    public void saveData() {
 
         /*
         Creates a new list and populates it with the data.
@@ -85,7 +85,6 @@ public class AppStorage extends Storage {
 
         lastFile = file;
         lastTimeStamp = time;
-        saveData();
 
     }
 

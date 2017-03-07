@@ -65,10 +65,11 @@ public class ParserJson {
             JSONObject jsonObject = (JSONObject) obj;
             String name = (String) jsonObject.get("Name");
             String count = String.valueOf(jsonObject.get("Count"));
+            String type = (String) jsonObject.get("Category");
             String time = (String) jsonObject.get("timestamp");
 
 
-            return new String[]{name, count, time};
+            return new String[]{name, count, type, time};
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -94,10 +95,11 @@ public class ParserJson {
             String name = (String) jsonObject.get("Commander");
             String credits = String.valueOf(jsonObject.get("Credits"));
             String ship = (String) jsonObject.get("Ship");
+            String shipName = (String)jsonObject.get("ShipName");
             String time = (String) jsonObject.get("timestamp");
 
 
-            return new String[]{name, credits, ship, time};
+            return new String[]{name, credits, ship, shipName, time};
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -131,10 +133,14 @@ public class ParserJson {
         try {
             Object obj = parser.parse(jsonString);
             JSONObject jsonObject = (JSONObject) obj;
+            String time = (String) jsonObject.get("timestamp");
             JSONArray jarray = (JSONArray)jsonObject.get(type);
 
 
-            String[][] returnString = new String[2][jarray.size()];
+            String[][] returnString = new String[3][];
+            returnString[0] = new String[jarray.size()];
+            returnString[1] = new String[jarray.size()];
+            returnString[2] = new String[]{time};
 
             for (int i = 0; i < jarray.size(); i++) {
 

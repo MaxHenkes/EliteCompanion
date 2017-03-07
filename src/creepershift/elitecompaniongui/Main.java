@@ -3,8 +3,9 @@ package creepershift.elitecompaniongui;
 import creepershift.elitecompaniongui.lang.Lang;
 import creepershift.journalparser.ParserMain;
 import creepershift.journalparser.Reference;
+import creepershift.journalparser.app.CommanderData;
+import creepershift.journalparser.app.MaterialDataHandler;
 import creepershift.journalparser.app.storage.AppStorage;
-import creepershift.journalparser.app.storage.MaterialStorage;
 import creepershift.journalparser.mods.Mods;
 import creepershift.journalparser.util.LogOutput;
 import javafx.application.Application;
@@ -22,6 +23,8 @@ public class Main extends Application {
     public static EngineerController controller;
     public static Lang lang;
     public static Mods mods;
+    public static MaterialDataHandler matHandler;
+    AppStorage appStr;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -40,6 +43,7 @@ public class Main extends Application {
 
                 parser.stopThread();
                 controller.closeStage();
+                appStr.saveData();
             }
         });
         mods = new Mods();
@@ -47,10 +51,10 @@ public class Main extends Application {
         logOutput = new LogOutput(13);
         logOutput.addNotFormattedString("Welcome Commander!");
         lang = new Lang(getClass().getResourceAsStream("/creepershift/elitecompaniongui/assets/Lang.txt"));
-
-
-      //  parser = new ParserObject(new AppStorage(Reference.dataDirectory, Reference.appDataFile), new MaterialStorage(Reference.dataDirectory, Reference.materialDataFile), logOutput);
-        parser = new ParserMain(new AppStorage(Reference.dataDirectory, Reference.appDataFile), new MaterialStorage(Reference.dataDirectory, Reference.materialDataFile), logOutput);
+        matHandler = new MaterialDataHandler();
+        appStr = new AppStorage(Reference.dataDirectory, Reference.appDataFile);
+        CommanderData cmdrData = new CommanderData(controller);
+        parser = new ParserMain(appStr, matHandler, logOutput, cmdrData);
 
     }
 

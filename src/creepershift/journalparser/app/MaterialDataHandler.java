@@ -9,42 +9,57 @@ import java.util.List;
 public class MaterialDataHandler {
 
     /*
-    TODO: REWIRE THE ENTIRE FUCKING THING, THANKS UPDATE! :)
+    MaterialData's for every available Materials are stored inside an ArrayList.
+    This class handles creating, modfying and displaying those materials.
      */
 
+    private List<MaterialData> materialData = new ArrayList<>();
 
-    public static List<MaterialData> mat = new ArrayList<>();
 
-    /*
-    Adds material count.
-    If material doesn't exist, we initialize it.
-    This way we can easily add new materials on the fly.
-    This is also used to load the saved data back into the RAM.
-     */
-    public static void addEntry(String name, int count) {
+    public MaterialDataHandler(){
+
+    }
+
+
+    public void setMaterialDump(List<MaterialData> mats){
+
+        materialData.clear();
+        materialData = mats;
+
+    }
+
+
+    public List<MaterialData> getMaterials(){
+
+        return materialData;
+    }
+
+
+
+    public void addsEntry(String name, int count, String type) {
         if(containsMaterial(name) >= 0){
-            mat.get(containsMaterial(name)).addCount(count);
+            materialData.get(containsMaterial(name)).addCount(count);
         }else if(containsMaterial(name) == -1){
-            mat.add(new MaterialData(name, count));
+            materialData.add(new MaterialData(name, count, type));
         }
 
 
     }
 
-    public static void removeEntry(String name, int count){
+    public void removesEntry(String name, int count, String type){
         if(containsMaterial(name) >= 0){
-            mat.get(containsMaterial(name)).subtractCount(count);
+            materialData.get(containsMaterial(name)).subtractCount(count);
         }
         else if(containsMaterial(name) == -1){
-            mat.add(new MaterialData(name, 0));
+            materialData.add(new MaterialData(name, 0, type));
         }
     }
 
 
-    private static int containsMaterial(String material){
+    private int containsMaterial(String material){
 
-        for (int i = 0; i < mat.size(); i++){
-            if (mat.get(i).hasMaterial(material))
+        for (int i = 0; i < materialData.size(); i++){
+            if (materialData.get(i).hasMaterial(material))
                 return i;
         }
         return -1;
@@ -53,10 +68,10 @@ public class MaterialDataHandler {
     /*
     Returns the amount of a material
      */
-    public static int getMaterialCount(String name) {
+    public  int getMaterialCount(String name) {
 
 
-        for (MaterialData aMat : mat) {
+        for (MaterialData aMat : materialData) {
             if (aMat.getMaterialName().equalsIgnoreCase(name))
                 return aMat.getMaterialCount();
         }
@@ -65,43 +80,23 @@ public class MaterialDataHandler {
 
     }
 
-    public static void printMaterial() {
+    public  void printMaterial() {
 
-        for (MaterialData aMat : mat) {
+        for (MaterialData aMat : materialData) {
             System.out.println(aMat.getMaterialName() + " " + aMat.getMaterialCount());
         }
     }
 
-    public static String presentMaterials(){
+    public  String presentMaterials(){
 
-        String mats = new String();
+        String mats = "";
 
-        for(MaterialData aMat : mat){
+        for(MaterialData aMat : materialData){
             mats = mats + aMat.getMaterialName() + ": " + aMat.getMaterialCount() + "\n";
         }
 
         return mats;
     }
-
-
-    public static String[] saveMaterialString(){
-
-
-
-        String [] mats = new String[mat.size()*2];
-        int j = 0;
-
-        for(int i = 0; i < mat.size(); i++){
-            mats[j] = mat.get(i).getMaterialName();
-            j++;
-            mats[j] = String.valueOf(mat.get(i).getMaterialCount());
-            j++;
-        }
-
-    return mats;
-    }
-
-
 
 
 

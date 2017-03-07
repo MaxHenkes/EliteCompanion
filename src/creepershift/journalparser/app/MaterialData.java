@@ -7,11 +7,13 @@ public class MaterialData {
 
    private String materialName;
    private int materialCount;
+   private String type;
 
 
-    MaterialData(String name, int count){
+   public MaterialData(String name, int count, String type){
         materialName = name;
         materialCount = count;
+        this.type = type;
     }
 
    public String getMaterialName(){
@@ -38,4 +40,7 @@ public class MaterialData {
         return materialName.equalsIgnoreCase(mat);
     }
 
+    public String returnType(){
+        return type;
+    }
 }

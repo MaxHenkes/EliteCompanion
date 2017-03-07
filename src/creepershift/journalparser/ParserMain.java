@@ -1,7 +1,8 @@
 package creepershift.journalparser;
 
+import creepershift.journalparser.app.CommanderData;
+import creepershift.journalparser.app.MaterialDataHandler;
 import creepershift.journalparser.app.storage.AppStorage;
-import creepershift.journalparser.app.storage.MaterialStorage;
 import creepershift.journalparser.parser.ParseJournal;
 import creepershift.journalparser.util.LogOutput;
 
@@ -14,18 +15,19 @@ import java.io.File;
 public class ParserMain extends Thread {
 
     private AppStorage appStorage;
-    private MaterialStorage materialStorage;
+    private MaterialDataHandler matHandler;
     private LogOutput log;
     private boolean doParse = true;
     private int sleepTimer = 5000;
     private volatile Thread thread;
     private boolean startup = true;
-    private String commander;
+    private CommanderData commanderData;
 
-    public ParserMain(AppStorage appst, MaterialStorage matst, LogOutput log) {
+    public ParserMain(AppStorage appst, MaterialDataHandler mats, LogOutput log, CommanderData cmdrData) {
 
         appStorage = appst;
-        materialStorage = matst;
+        matHandler = mats;
+        commanderData = cmdrData;
         this.log = log;
         thread = new Thread(this);
         thread.start();
@@ -49,7 +51,7 @@ public class ParserMain extends Thread {
 
 
                 if (startup) {
-                    ParseJournal parser = new ParseJournal(getLatestFile(journals), materialStorage, appStorage, log);
+                    ParseJournal parser = new ParseJournal(getLatestFile(journals), matHandler, appStorage, log, commanderData, startup);
 
                     startup = false;
                     continue;
@@ -68,7 +70,7 @@ public class ParserMain extends Thread {
 
                         if (appStorage.lastFileNumber() == null || (Double.parseDouble(appStorage.lastFileNumber()) <= Double.parseDouble(s1[0]))) {
 
-                            ParseJournal parser = new ParseJournal(file, materialStorage, appStorage, log);
+                            ParseJournal parser = new ParseJournal(file, matHandler, appStorage, log, commanderData, startup);
 
                         }
 

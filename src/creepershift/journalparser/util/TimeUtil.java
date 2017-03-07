@@ -26,6 +26,9 @@ public class TimeUtil {
             Date date1 = sdf.parse(d1);
             Date date2 = sdf.parse(d2);
 
+            if(date1.equals(date2)){
+                return false;
+            }
             if(date1.after(date2))
                 return true;
 
@@ -33,7 +36,6 @@ public class TimeUtil {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
 
         return false;
     }

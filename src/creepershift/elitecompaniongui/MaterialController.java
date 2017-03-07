@@ -2,7 +2,6 @@ package creepershift.elitecompaniongui;
 
 import creepershift.elitecompaniongui.data.Table;
 import creepershift.journalparser.app.MaterialData;
-import creepershift.journalparser.app.MaterialDataHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -42,7 +41,7 @@ public class MaterialController implements Initializable {
 
         ObservableList<Table> data = FXCollections.observableArrayList();
 
-        for (MaterialData mat : MaterialDataHandler.mat) {
+        for (MaterialData mat : Main.matHandler.getMaterials()) {
 
             data.add(new Table(mat.getMaterialCount(), Main.lang.getLangName(mat.getMaterialName())));
         }
